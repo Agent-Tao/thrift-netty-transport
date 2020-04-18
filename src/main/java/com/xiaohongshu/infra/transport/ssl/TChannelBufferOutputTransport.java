@@ -3,6 +3,10 @@ package com.xiaohongshu.infra.transport.ssl;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.ByteBufAllocator;
 import io.netty.util.ReferenceCounted;
+import org.apache.thrift.TException;
+import org.apache.thrift.protocol.TBinaryProtocol;
+import org.apache.thrift.protocol.TMessage;
+import org.apache.thrift.protocol.TProtocol;
 import org.apache.thrift.transport.TTransport;
 import org.apache.thrift.transport.TTransportException;
 
@@ -61,7 +65,8 @@ public class TChannelBufferOutputTransport
     @Override
     public int read(byte[] buf, int off, int len)
     {
-        throw new UnsupportedOperationException();
+        buffer.readBytes(buf, off, len);
+        return len - off;
     }
 
     @Override

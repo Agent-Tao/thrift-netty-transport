@@ -22,6 +22,10 @@ public class TChannelBufferInputTransport
         this.buffer = requireNonNull(buffer, "buffer is null");
     }
 
+    public void resetSeq(int i) {
+
+
+    }
     @Override
     public boolean isOpen() {
         return true;

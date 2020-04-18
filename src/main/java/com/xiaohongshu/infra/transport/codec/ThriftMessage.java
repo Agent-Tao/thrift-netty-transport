@@ -4,6 +4,7 @@ import io.netty.buffer.ByteBuf;
 import io.netty.util.ReferenceCounted;
 
 import javax.annotation.CheckReturnValue;
+import java.util.HashMap;
 import java.util.Map;
 
 import static java.util.Objects.requireNonNull;
@@ -14,7 +15,7 @@ public class ThriftMessage
 {
     private final int sequenceId;
     private final ByteBuf message;
-    private final Map<String, String> headers;
+    private final Map<String, String> headers = new HashMap<>();
     private final Transport transport;
     private final Protocol protocol;
     private final boolean supportOutOfOrderResponse;
@@ -23,7 +24,7 @@ public class ThriftMessage
     {
         this.sequenceId = sequenceId;
         this.message = requireNonNull(message, "message is null");
-        this.headers = requireNonNull(headers, "headers is null");
+        //this.headers = requireNonNull(headers, "headers is null");
         this.transport = requireNonNull(transport, "transport is null");
         this.protocol = requireNonNull(protocol, "protocol is null");
         this.supportOutOfOrderResponse = supportOutOfOrderResponse;

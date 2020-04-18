@@ -48,6 +48,11 @@ public class ThriftProtocolDetection
     @Override
     protected void decode(ChannelHandlerContext context, ByteBuf in, List<Object> out)
     {
+        while (in.isReadable()){
+            System.out.print(in.readByte()+" ");
+        }
+        in.resetReaderIndex();
+
         // minimum bytes required to detect framing
         if (in.readableBytes() < 4) {
             return;

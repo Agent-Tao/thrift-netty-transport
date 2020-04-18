@@ -31,7 +31,7 @@ public class TestMemory {
         System.out.println(transport.getOutputBuffer().readableBytes());
 
 
-
+        String ret = client.recv_hello();
     }
 
 }
